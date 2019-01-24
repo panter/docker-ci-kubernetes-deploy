@@ -1,1 +1,1 @@
-# docker-ci-meteor
+# docker-ci-kubernetes-deploy
