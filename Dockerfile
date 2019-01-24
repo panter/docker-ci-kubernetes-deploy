@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add -U openssl curl bash ca-certificates git node yarn
+RUN apk add -U openssl curl bash ca-certificates git nodejs yarn
 
 ENV KUBERNETES_VERSION 1.8.6
 RUN curl -L -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" ;\
