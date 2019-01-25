@@ -1,6 +1,7 @@
 FROM alpine:latest
 
 RUN apk add -U openssl curl bash ca-certificates git nodejs nodejs-npm yarn
+RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
 
 ENV KUBERNETES_VERSION 1.8.6
 RUN curl -L -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" ;\
