@@ -1,10 +1,6 @@
 FROM alpine:latest
 
-RUN apk add -U openssl curl bash ca-certificates git nodejs nodejs-npm yarn
-
-# install gettext for envsubst
-RUN apt-get update
-RUN apt-get install -y gettext-base
+RUN apk add -U openssl curl bash ca-certificates git nodejs nodejs-npm yarn gettext-base
 
 RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
 
