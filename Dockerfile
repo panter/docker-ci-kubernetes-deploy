@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM node:latest
 
 
 RUN apk add -U openssl curl bash ca-certificates git nodejs nodejs-npm yarn gettext
