@@ -2,6 +2,8 @@ FROM alpine:latest
 
 
 RUN apk add -U openssl curl bash ca-certificates git nodejs nodejs-npm yarn gettext
+
+# add meteor (used by some apps)
 RUN curl https://install.meteor.com/ | sh
 
 RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
