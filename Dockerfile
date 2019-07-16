@@ -1,7 +1,7 @@
 FROM node:latest
 
 
-RUN apk add -U openssl curl bash ca-certificates git nodejs nodejs-npm yarn gettext
+RUN apt-get install openssl curl bash ca-certificates git nodejs nodejs-npm yarn gettext
 
 # add meteor (used by some apps)
 RUN curl https://install.meteor.com/ | sh
