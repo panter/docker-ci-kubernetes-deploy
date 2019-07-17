@@ -1,7 +1,10 @@
 FROM node:latest
 
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-RUN apt-get install openssl curl bash ca-certificates git nodejs nodejs-npm yarn gettext
+RUN apt-get update
+RUN apt-get install openssl curl bash ca-certificates git gettext-base yarn
 
 # add meteor (used by some apps)
 RUN curl https://install.meteor.com/ | sh
