@@ -36,4 +36,5 @@ RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-l
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
+RUN echo '. /root/.nvm/nvm.sh' >> /root/.bashrc
 RUN . /root/.nvm/nvm.sh && nvm --version
