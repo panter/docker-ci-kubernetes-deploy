@@ -8,6 +8,17 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update
 RUN apt-get install -y git ssh-client openssl curl bash ca-certificates git gettext-base yarn
 
+#  very handy for easier signal handling of SIGINT/SIGTERM/SIGKILL etc.
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb
+RUN dpkg -i dumb-init_*.deb
+ENTRYPOINT ["dumb-init"]
+
+# Install Google Chrome (for testing purposes)
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update && apt-get install -y google-chrome-stable
+
+
 # add meteor (used by some apps)
 RUN curl https://install.meteor.com/ | sh
 
@@ -22,3 +33,7 @@ ENV HELM_VERSION 2.6.1
 RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
     mv linux-amd64/helm /usr/bin/ ;\
     helm version --client
+
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . /root/.nvm/nvm.sh && nvm --version
