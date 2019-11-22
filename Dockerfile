@@ -26,9 +26,9 @@ RUN apt-get update && apt-get install -y google-chrome-stable
 # add meteor (used by some apps)
 RUN curl https://install.meteor.com/ | sh
 # install some additional used released (should theoretically speed up ci-builds)
-RUN meteor update --release 1.8.1
-RUN meteor update --release 1.8.1-issue-10516.0
-RUN meteor update --release 1.8.2
+RUN meteor update --release 1.8.1 --allow-superuser
+RUN meteor update --release 1.8.1-issue-10516.0 --allow-superuser
+RUN meteor update --release 1.8.2 --allow-superuser
 
 
 RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
