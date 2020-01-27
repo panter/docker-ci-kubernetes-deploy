@@ -30,6 +30,7 @@ RUN curl https://install.meteor.com/ | sh
 RUN meteor update --release 1.8.1 --allow-superuser
 RUN meteor update --release 1.8.1-issue-10516.0 --allow-superuser
 RUN meteor update --release 1.8.2 --allow-superuser
+RUN meteor update --release 1.9 --allow-superuser
 
 RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
 
