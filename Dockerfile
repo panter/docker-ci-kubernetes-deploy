@@ -28,13 +28,13 @@ RUN yarn config set network-timeout 600000 -g
 RUN curl https://install.meteor.com/ | sh
 # install some additional used released (should theoretically speed up ci-builds)
 RUN meteor update --release 1.8.1 --allow-superuser
-RUN meteor update --release 1.8.1-issue-10516.0 --allow-superuser
 RUN meteor update --release 1.8.2 --allow-superuser
 RUN meteor update --release 1.9 --allow-superuser
+RUN meteor update --release 1.9.1 --allow-superuser
 
 RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
 
-ENV KUBERNETES_VERSION 1.8.6
+ENV KUBERNETES_VERSION 1.14.10
 RUN curl -L -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" ;\
     chmod +x /usr/bin/kubectl ;\
     kubectl version --client
