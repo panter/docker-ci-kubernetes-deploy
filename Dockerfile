@@ -46,7 +46,7 @@ RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-l
 RUN cp /usr/bin/helm /usr/bin/helm2
 # also install helm3
 ENV HELM_VERSION 3.5.4
-RUN curl "https://get.helm.sh/helm-v${HELM_VERSION}-linux-arm64.tar.gz" | tar zx ;\
+RUN curl "https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
     mv linux-amd64/helm /usr/bin/helm3 ;\
     helm3 version --client
 
