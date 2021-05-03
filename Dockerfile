@@ -43,6 +43,12 @@ ENV HELM_VERSION 2.14.3
 RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
     mv linux-amd64/helm /usr/bin/ ;\
     helm version --client
+RUN cp /usr/bin/helm /usr/bin/helm2
+# also install helm3
+ENV HELM_VERSION 3.5.4
+RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
+    mv linux-amd64/helm /usr/bin/helm3 ;\
+    helm3 version --client
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 RUN source /root/.nvm/nvm.sh
@@ -53,6 +59,7 @@ RUN /root/.nvm/nvm.sh install 12
 RUN /root/.nvm/nvm.sh install 13
 RUN /root/.nvm/nvm.sh install 14
 RUN /root/.nvm/nvm.sh install 15
+RUN /root/.nvm/nvm.sh install 16
 # ENV NVM_DIR=/root/.nvm
 # RUN bash -c 'source /root/.nvm/nvm.sh'
 # RUN echo '. /root/.nvm/nvm.sh' >> /root/.bashrc
