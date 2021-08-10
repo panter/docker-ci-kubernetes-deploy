@@ -34,18 +34,18 @@ RUN meteor update --release 1.9.1 --allow-superuser
 
 RUN yarn global add semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/git @semantic-release/changelog @semantic-release/gitlab;
 
-ENV KUBERNETES_VERSION 1.14.10
+ENV KUBERNETES_VERSION 1.18.20
 RUN curl -L -o /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VERSION}/bin/linux/amd64/kubectl" ;\
     chmod +x /usr/bin/kubectl ;\
     kubectl version --client
 
-ENV HELM_VERSION 2.14.3
-RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
+ENV HELM_2_VERSION 2.14.3
+RUN curl "https://get.helm.sh/helm-v${HELM_2_VERSION}-linux-amd64.tar.gz" | tar zx ;\
     mv linux-amd64/helm /usr/bin/ ;\
     helm version --client
 RUN cp /usr/bin/helm /usr/bin/helm2
 # also install helm3
-ENV HELM_VERSION 3.5.4
+ENV HELM_VERSION 3.6.3
 RUN curl "https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
     mv linux-amd64/helm /usr/bin/helm3 ;\
     helm3 version --client
