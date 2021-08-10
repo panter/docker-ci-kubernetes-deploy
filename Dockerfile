@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:14
 
 RUN rm /bin/sh && \
     ln -s /bin/bash /bin/sh && \
